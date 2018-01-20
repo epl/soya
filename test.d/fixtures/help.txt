@@ -1,0 +1,19 @@
+Usage: soya [OPTION]... [FILE]...
+
+    -C, --canonical                  Output in a canonical order.
+    -s, --[no-]strict                Strict mode (error on duplicate keys)
+    -f, --from=format                Input/from file format [json, yaml (default)]
+    -t, --to=format                  Output/to file format [json, yaml (default)]
+
+    -D, --define=PATH=EXPRESSION ... Define an element
+    -c, --copy=DEST=SRC ...          Copy a source subtree path to a destination path
+    -e, --extract=PATH               Output the subtree under PATH
+    -d, --delete=PATH ...            Deletes the subtree under PATH
+    -i, --insert=PATH                Insert the entire tree under PATH
+
+    -v, --verbose                    Verbose mode
+    -V, --version                    Display version
+    -h, --help                       Display help
+
+Processing order: merge, definition, copying, extraction, deletion, insertion
+PATH is a dot-delimited list of keys.

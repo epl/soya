@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# TODO:
+# - Replace with a proper testing framework that tests stdout, stderr, return code.
+# - Write a wrapper around soya to reduce boilerplate
+# - Have smarter log messages providing context when tests fail.
+# - Test more error cases.
+
+log() {
+    echo "$(date +%FT%T.%N%z): $@" 1>&2
+}
+
+base_dir=$(readlink -e $(dirname $(dirname $0)))
+test_dir="${base_dir}/test.d"
+tmp_dir="${base_dir}/tmp"
+mkdir -p "${tmp_dir}"
+export SOYA="${base_dir}/bin/soya"
+export fixtures_dir="${test_dir}/fixtures"
+rc=0
+
+for t in "${test_dir}/"*.sh; do
+    export TMPDIR=$(mktemp -d "${tmp_dir}/soya_tests.XXXXXX")
+    "${t}"
+    rc=$?
+    if [ $rc -eq 0 ]; then
+        log "passed: ${t}"
+    else
+        log "failed: ${t}"
+        rc=1
+    fi
+    rm -rf "${TMPDIR}"
+done
+
+exit $rc

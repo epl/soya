@@ -1,0 +1,25 @@
+{
+  "brand": "Hyundai",
+  "model": "i30",
+  "year": 2018,
+  "engine": {
+    "type": "Nu",
+    "capacity": 1.8
+  },
+  "options": {
+    "camera": true,
+    "gps": false
+  },
+  "service_history": [
+    {
+      "datetime": "2018-07-10T03:12:51Z",
+      "cost": 0.0,
+      "odometer": 2952
+    },
+    {
+      "datetime": "2019-04-21T23:41:03Z",
+      "cost": 199.95,
+      "odometer": 10937
+    }
+  ]
+}

@@ -1,5 +1,13 @@
 ---
-brand: test brand remove before commit
+brand: Hyundai
+model: i30
+year: 2018
+engine:
+  type: Nu
+  capacity: 1.8
+options:
+  camera: true
+  gps: false
 service_history:
 - datetime: '2018-07-10T03:12:51Z'
   cost: 0.0

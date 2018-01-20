@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# Unit tests
+bundle exec rspec "$@"
+if [ $? -eq 0 ]; then
+  echo "$(date +%FT%T.%N%z): rspec unit tests successful" 1>&2
+else
+  echo "$(date +%FT%T.%N%z): rspec unit tests failed" 1>&2
+  exit 1
+fi
+
+# End-to-End tests
+base_dir=$(readlink -e $(dirname $0))
+"${base_dir}/scripts/e2e_tests"
+if [ $? -eq 0 ]; then
+  echo "$(date +%FT%T.%N%z): E2E tests successful" 1>&2
+else
+  echo "$(date +%FT%T.%N%z): E2E tests failed" 1>&2
+  exit 1
+fi
+
+exit 0
